@@ -33,19 +33,15 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>MR ROBOT - PONTO STEFANINI LOG</h1>
-			<br/>DELAY: ${currentDelay}
+			<h1>ALEX MELLO - LINK CRAWLER</h1>
+			<h3>URL: ${url}</h3>
 			<table>
 		    <tr>
-		        <th>DATA</th>
-		        <th>LOG</th>
+		        <th>LINK</th>
 		    </tr>
-                <c:forEach items="${listLogPonto}" var="logPonto">
+                <c:forEach items="${finalLink}" var="finalLink2">
 				    <tr>
-				        <td>
-				        <p><fmt:formatDate type = "both" value = "${logPonto.data}" /></p>
-				        </td>
-						<td><a href="/getLog?logID=${logPonto.logID}"><span style="cursor: pointer;" class="glyphicon glyphicon-search"></span></a></td>
+				        <td><a href="${finalLink2}">${finalLink2}</a></td>
 				    </tr>
 		    	</c:forEach>
 			</table>
