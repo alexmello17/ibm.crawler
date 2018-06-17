@@ -42,13 +42,24 @@ public class WelcomeController {
 		Document filter;
 		int loop=1;
 		List<String> list = new ArrayList<String>();
+		
+		String sufix="";
+		try{
+			String[] sufixx = url.split("www.");
+			String[] sufixxx = sufixx[1].split(".com");
+			sufix = sufixxx[0];
+		}catch (Exception e) {
+			sufix  = url.split("www.")[0];
+		}
+		
+		
 		while(loop<loopProp){
 			int i=0;
 			driver.get(url);
 			List<WebElement> linksize = driver.findElements(By.tagName("a"));
 			// print all the links from webpage
 			for (WebElement e : linksize) {
-				if(e.getAttribute("href") != null && e.getAttribute("href").contains(".ibm.")){
+				if(e.getAttribute("href") != null && e.getAttribute("href").contains("www.") && e.getAttribute("href").contains(sufix)){
 					filter = new Document("link"+i++, e.getAttribute("href"));
 					list.add(e.getAttribute("href"));
 					linksDbCollection.insertOne(filter);
